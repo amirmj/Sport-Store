@@ -1,12 +1,12 @@
 package com.codewithmosh.store.DTO;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
 @AllArgsConstructor
-@Getter
+@Data
 public class ProductDto {
     private Long id;
     private String name;
