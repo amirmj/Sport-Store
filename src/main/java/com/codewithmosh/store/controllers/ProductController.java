@@ -1,6 +1,6 @@
 package com.codewithmosh.store.controllers;
 
-import com.codewithmosh.store.DTO.ProductDto;
+import com.codewithmosh.store.dtos.ProductDto;
 import com.codewithmosh.store.entities.Category;
 import com.codewithmosh.store.entities.Product;
 import com.codewithmosh.store.mappers.ProductMapper;
