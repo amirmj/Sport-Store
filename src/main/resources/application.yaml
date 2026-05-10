@@ -1,4 +1,6 @@
 spring:
+  config:
+    import: optional:file:.env[.properties]
   application:
     name: store
   datasource:
@@ -7,3 +9,5 @@ spring:
     password: Amir1376reall
   jpa:
     show-sql: true
+  jwt:
+    secret: ${JWT_SECRET:KudUrCLNF7tHdUhguuZIxe0PqZAXcW1pWz07Olu7qLYHj+wCR3iUXIeTkkfhaJIyBAXQ4BNOMgZrw+NDKkj+Og==}
