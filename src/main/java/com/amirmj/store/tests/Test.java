@@ -1,6 +1,6 @@
-package com.codewithmosh.store.tests;
+package com.amirmj.store.tests;
 
-import com.codewithmosh.store.repositories.CartRepository;
+import com.amirmj.store.repositories.CartRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

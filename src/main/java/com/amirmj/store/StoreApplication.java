@@ -1,4 +1,4 @@
-package com.codewithmosh.store;
+package com.amirmj.store;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
