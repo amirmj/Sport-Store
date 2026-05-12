@@ -1,4 +1,4 @@
-package com.codewithmosh.store.dtos;
+package com.amirmj.store.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
