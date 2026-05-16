@@ -3,8 +3,6 @@ package com.amirmj.store.controllers;
 import com.amirmj.store.dtos.CartDto;
 import com.amirmj.store.dtos.ProductRequest;
 import com.amirmj.store.dtos.UpdateCartItemDto;
-import com.amirmj.store.exceptions.CartNotFoundException;
-import com.amirmj.store.exceptions.ProductNotFoundException;
 import com.amirmj.store.services.CartService;
 import com.amirmj.store.dtos.CartItemsDto;
 import lombok.AllArgsConstructor;
@@ -13,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Map;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -76,15 +73,4 @@ public class CartController {
         return ResponseEntity.noContent().build();
     }
 
-    @ExceptionHandler(CartNotFoundException.class)
-    public ResponseEntity<Map<String, String>> handleCartException() {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(Map.of("error", "cart was not found"));
-    }
-
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<Map<String, String>> handleProductException() {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(Map.of("error", "Product was not found in Cart"));
-    }
 }
