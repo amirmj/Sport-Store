@@ -1,7 +1,9 @@
 package com.amirmj.store.exceptions;
 
+import com.amirmj.store.dtos.ErrorDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -24,10 +26,9 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(errors);
     }
 
-    @ExceptionHandler(CartNotFoundException.class)
-    public ResponseEntity<Map<String, String>> handleCartException() {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(Map.of("error", "cart was not found"));
+    @ExceptionHandler({CartEmptyException.class, CartNotFoundException.class})
+    public ResponseEntity<ErrorDto> handleCartException(Exception e) {
+        return ResponseEntity.badRequest().body(new ErrorDto(e.getMessage()));
     }
 
     @ExceptionHandler(ProductNotFoundException.class)
@@ -35,5 +36,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(Map.of("error", "Product was not found in Cart"));
     }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorDto> handleBadMessageException() {
+        return ResponseEntity.badRequest().body(
+                new ErrorDto("Invalid request body")
+        );
+    }
+
 
 }
