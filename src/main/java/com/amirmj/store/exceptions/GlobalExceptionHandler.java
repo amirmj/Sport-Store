@@ -4,6 +4,7 @@ import com.amirmj.store.dtos.ErrorDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -44,5 +45,14 @@ public class GlobalExceptionHandler {
         );
     }
 
+    @ExceptionHandler(OrderNotFoundException.class)
+    public ResponseEntity<Void> handleOrderNotFoundException(Exception e) {
+        return ResponseEntity.notFound().build();
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<ErrorDto> handleOrderNotAccessedExceptionException(Exception e) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new ErrorDto(e.getMessage()));
+    }
 
 }
