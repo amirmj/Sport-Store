@@ -1,7 +1,5 @@
-package com.amirmj.store.controllers;
+package com.amirmj.store.orders;
 
-import com.amirmj.store.dtos.OrderDto;
-import com.amirmj.store.services.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

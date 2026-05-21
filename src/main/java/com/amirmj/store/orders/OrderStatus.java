@@ -1,4 +1,4 @@
-package com.amirmj.store.entities;
+package com.amirmj.store.orders;
 
 public enum OrderStatus {
     PENDING,

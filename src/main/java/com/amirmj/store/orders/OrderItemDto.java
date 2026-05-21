@@ -1,4 +1,4 @@
-package com.amirmj.store.dtos;
+package com.amirmj.store.orders;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 @Data
 public class OrderItemDto {
-    private OrderProductDto product;
+    private ProductDto product;
     private Integer quantity;
     private BigDecimal totalPrice;
 }

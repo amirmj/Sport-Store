@@ -1,4 +1,4 @@
-package com.amirmj.store.exceptions;
+package com.amirmj.store.orders;
 
 public class OrderNotFoundException extends RuntimeException {
     public OrderNotFoundException() {

@@ -1,11 +1,7 @@
-package com.amirmj.store.services;
+package com.amirmj.store.orders;
 
-import com.amirmj.store.dtos.OrderDto;
-import com.amirmj.store.entities.Order;
-import com.amirmj.store.entities.User;
-import com.amirmj.store.exceptions.OrderNotFoundException;
-import com.amirmj.store.mappers.OrderMapper;
-import com.amirmj.store.repositories.OrderRepository;
+import com.amirmj.store.auth.AuthService;
+import com.amirmj.store.users.User;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;

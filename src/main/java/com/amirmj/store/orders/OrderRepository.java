@@ -1,7 +1,6 @@
-package com.amirmj.store.repositories;
+package com.amirmj.store.orders;
 
-import com.amirmj.store.entities.Order;
-import com.amirmj.store.entities.User;
+import com.amirmj.store.users.User;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

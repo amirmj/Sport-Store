@@ -1,7 +1,5 @@
-package com.amirmj.store.mappers;
+package com.amirmj.store.orders;
 
-import com.amirmj.store.dtos.OrderDto;
-import com.amirmj.store.entities.Order;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

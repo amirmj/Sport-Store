@@ -1,5 +1,6 @@
-package com.amirmj.store.entities;
+package com.amirmj.store.orders;
 
+import com.amirmj.store.products.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
