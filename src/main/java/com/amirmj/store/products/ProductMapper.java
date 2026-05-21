@@ -1,7 +1,5 @@
-package com.amirmj.store.mappers;
+package com.amirmj.store.products;
 
-import com.amirmj.store.entities.Product;
-import com.amirmj.store.dtos.ProductDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

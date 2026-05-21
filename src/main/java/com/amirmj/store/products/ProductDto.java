@@ -1,4 +1,4 @@
-package com.amirmj.store.dtos;
+package com.amirmj.store.products;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

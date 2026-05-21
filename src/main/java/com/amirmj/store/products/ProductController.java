@@ -1,11 +1,5 @@
-package com.amirmj.store.controllers;
+package com.amirmj.store.products;
 
-import com.amirmj.store.entities.Product;
-import com.amirmj.store.dtos.ProductDto;
-import com.amirmj.store.entities.Category;
-import com.amirmj.store.mappers.ProductMapper;
-import com.amirmj.store.repositories.CategoryRepository;
-import com.amirmj.store.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
