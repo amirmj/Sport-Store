@@ -1,7 +1,6 @@
-package com.amirmj.store.services;
+package com.amirmj.store.auth;
 
-import com.amirmj.store.configs.JwtConfig;
-import com.amirmj.store.entities.User;
+import com.amirmj.store.users.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;

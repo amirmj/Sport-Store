@@ -1,4 +1,4 @@
-package com.amirmj.store.configs;
+package com.amirmj.store.auth;
 
 import io.jsonwebtoken.security.Keys;
 import lombok.Data;

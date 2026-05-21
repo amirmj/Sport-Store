@@ -1,4 +1,4 @@
-package com.amirmj.store.dtos;
+package com.amirmj.store.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

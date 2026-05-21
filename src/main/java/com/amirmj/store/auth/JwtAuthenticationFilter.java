@@ -1,6 +1,5 @@
-package com.amirmj.store.filters;
+package com.amirmj.store.auth;
 
-import com.amirmj.store.services.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
