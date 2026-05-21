@@ -1,7 +1,5 @@
-package com.amirmj.store.controllers;
+package com.amirmj.store.payment;
 
-import com.amirmj.store.dtos.CheckoutRequest;
-import com.amirmj.store.services.CheckoutService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

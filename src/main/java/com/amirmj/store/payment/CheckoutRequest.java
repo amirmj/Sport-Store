@@ -1,4 +1,4 @@
-package com.amirmj.store.dtos;
+package com.amirmj.store.payment;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
