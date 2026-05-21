@@ -1,17 +1,8 @@
-package com.amirmj.store.services;
+package com.amirmj.store.carts;
 
-import com.amirmj.store.dtos.CartDto;
-import com.amirmj.store.dtos.CartItemsDto;
-import com.amirmj.store.dtos.ProductRequest;
-import com.amirmj.store.dtos.UpdateCartItemDto;
-import com.amirmj.store.entities.Cart;
-import com.amirmj.store.entities.CartItem;
-import com.amirmj.store.entities.Product;
-import com.amirmj.store.exceptions.CartNotFoundException;
-import com.amirmj.store.exceptions.ProductNotFoundException;
-import com.amirmj.store.mappers.CartMapper;
-import com.amirmj.store.repositories.CartRepository;
-import com.amirmj.store.repositories.ProductRepository;
+import com.amirmj.store.products.Product;
+import com.amirmj.store.products.ProductNotFoundException;
+import com.amirmj.store.products.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +22,7 @@ public class CartService {
         return cartMapper.toDto(cart);
     }
 
-    public CartItemsDto addProductItem(UUID cartId, ProductRequest request) {
+    public CartItemsDto addProductItem(UUID cartId, AddItemsToCartRequest request) {
         Cart cart = cartRepository.getCartWithItems(cartId).orElse(null);
         if (cart == null) {
             throw new CartNotFoundException();

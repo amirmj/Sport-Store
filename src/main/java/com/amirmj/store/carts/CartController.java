@@ -1,10 +1,5 @@
-package com.amirmj.store.controllers;
+package com.amirmj.store.carts;
 
-import com.amirmj.store.dtos.CartDto;
-import com.amirmj.store.dtos.ProductRequest;
-import com.amirmj.store.dtos.UpdateCartItemDto;
-import com.amirmj.store.services.CartService;
-import com.amirmj.store.dtos.CartItemsDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,11 +24,10 @@ public class CartController {
         return ResponseEntity.created(uri).body(cartDto);
     }
 
-
     @PostMapping("/{cartId}/items")
     public ResponseEntity<CartItemsDto> addProductCart(
             @PathVariable UUID cartId,
-            @RequestBody ProductRequest request
+            @RequestBody AddItemsToCartRequest request
     ) {
         CartItemsDto cartItemsDto = cartService.addProductItem(cartId, request);
         return ResponseEntity.status(HttpStatus.CREATED).body(cartItemsDto);

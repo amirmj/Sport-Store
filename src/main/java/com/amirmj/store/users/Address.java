@@ -1,4 +1,4 @@
-package com.amirmj.store.entities;
+package com.amirmj.store.users;
 
 import jakarta.persistence.*;
 import lombok.*;

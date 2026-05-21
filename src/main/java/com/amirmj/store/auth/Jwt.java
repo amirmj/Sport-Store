@@ -1,6 +1,6 @@
-package com.amirmj.store.services;
+package com.amirmj.store.auth;
 
-import com.amirmj.store.entities.Role;
+import com.amirmj.store.users.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 

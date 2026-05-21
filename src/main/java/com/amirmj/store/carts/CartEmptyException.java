@@ -1,4 +1,4 @@
-package com.amirmj.store.exceptions;
+package com.amirmj.store.carts;
 
 public class CartEmptyException extends RuntimeException {
     public CartEmptyException() {

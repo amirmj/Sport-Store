@@ -1,6 +1,5 @@
-package com.amirmj.store.dtos;
+package com.amirmj.store.carts;
 
-import com.amirmj.store.entities.CartItem;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.Data;

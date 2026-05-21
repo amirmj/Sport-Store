@@ -1,9 +1,5 @@
-package com.amirmj.store.mappers;
+package com.amirmj.store.carts;
 
-import com.amirmj.store.entities.CartItem;
-import com.amirmj.store.dtos.CartDto;
-import com.amirmj.store.dtos.CartItemsDto;
-import com.amirmj.store.entities.Cart;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

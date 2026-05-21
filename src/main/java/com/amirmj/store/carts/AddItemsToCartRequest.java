@@ -1,11 +1,11 @@
-package com.amirmj.store.dtos;
+package com.amirmj.store.carts;
 
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class ProductRequest {
+public class AddItemsToCartRequest {
     @NotNull
     private Long productId;
 }
