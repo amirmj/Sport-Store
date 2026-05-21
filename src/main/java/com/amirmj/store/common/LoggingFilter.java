@@ -1,4 +1,4 @@
-package com.amirmj.store.filters;
+package com.amirmj.store.common;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
