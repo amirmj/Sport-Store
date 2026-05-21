@@ -1,4 +1,4 @@
-package com.amirmj.store.dtos;
+package com.amirmj.store.users;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

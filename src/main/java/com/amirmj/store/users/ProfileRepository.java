@@ -1,6 +1,5 @@
-package com.amirmj.store.repositories;
+package com.amirmj.store.users;
 
-import com.amirmj.store.entities.Profile;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ProfileRepository extends CrudRepository<Profile, Long> {

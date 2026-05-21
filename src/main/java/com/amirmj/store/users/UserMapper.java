@@ -1,13 +1,12 @@
-package com.amirmj.store.mappers;
+package com.amirmj.store.users;
 
-import com.amirmj.store.dtos.RegisterUserRequest;
-import com.amirmj.store.entities.User;
-import com.amirmj.store.dtos.UserDto;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
     UserDto toUserDto(User user);
-
     User toEntity(RegisterUserRequest registerUserRequest);
+
+    void update(UpdateUserRequest request, @MappingTarget User user);
 }

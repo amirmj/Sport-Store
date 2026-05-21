@@ -1,5 +1,6 @@
-package com.amirmj.store.entities;
+package com.amirmj.store.users;
 
+import com.amirmj.store.products.Product;
 import jakarta.persistence.*;
 import lombok.*;
 

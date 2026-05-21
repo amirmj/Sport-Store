@@ -1,4 +1,4 @@
-package com.amirmj.store.dtos;
+package com.amirmj.store.users;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -8,11 +8,12 @@ import lombok.Data;
 @Data
 public class RegisterUserRequest {
     @NotBlank(message = "name is required")
-    @Size(min = 2, max = 255)
+    @Size(max = 255, message = "Name must be less than 255 characters")
     private String name;
 
     @NotBlank(message = "Email is required")
     @Email(message = "Email must be valid")
+    @Lowercase(message = "Email must be in lowercase")
     private String email;
 
     @NotBlank

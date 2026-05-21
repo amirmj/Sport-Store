@@ -1,6 +1,5 @@
-package com.amirmj.store.services;
+package com.amirmj.store.users;
 
-import com.amirmj.store.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,14 +11,13 @@ import java.util.Collections;
 
 @AllArgsConstructor
 @Service
-public class UserService implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        var user = userRepository.findByEmail(email).
-                orElseThrow(() -> new UsernameNotFoundException(email));
-
+        var user = userRepository.findByEmail(email).orElseThrow(
+                () -> new UsernameNotFoundException("User not found"));
         return new User(
                 user.getEmail(),
                 user.getPassword(),

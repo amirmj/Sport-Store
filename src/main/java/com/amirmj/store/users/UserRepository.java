@@ -1,6 +1,5 @@
-package com.amirmj.store.repositories;
+package com.amirmj.store.users;
 
-import com.amirmj.store.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
