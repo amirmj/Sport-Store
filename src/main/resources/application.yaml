@@ -3,15 +3,11 @@ spring:
     import: optional:file:.env[.properties]
   application:
     name: store
-  datasource:
-    url: jdbc:mysql://localhost:3306/store_api?createDatabaseIfNotExist=true
-    username: root
-    password: Amir1376reall
-  jpa:
-    show-sql: true
   jwt:
     secret: ${JWT_SECRET}
     accessTokenExpiration: 7200 #2h
     refreshTokenExpiration: 604800 #7d
+  profiles:
+    active: dev
 stripe:
   secretKey: ${STRIPE_SECRET_KEY}
