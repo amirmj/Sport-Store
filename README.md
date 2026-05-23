@@ -71,6 +71,39 @@ mvn spring-boot:run
 
 ```
 
+## 📁 Project Structure
+
+```bash
+sport-store/
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/
+│       │       └── amirmj/
+│       │           └── store/
+│       │               ├── SportStoreApplication.java
+│       │               │
+│       │               ├── admin/              # Admin-related controllers & services
+│       │               ├── auth/               # Authentication & JWT logic
+│       │               ├── carts/              # Shopping cart management
+│       │               ├── common/             # Shared utilities, exceptions, DTOs, etc.
+│       │               ├── orders/             # Order management
+│       │               ├── payment/            # Payment processing (Stripe, etc.)
+│       │               ├── products/           # Product & Category management
+│       │               └── users/              # User management & registration
+│       │
+│       └── resources/
+│           ├── application.yml                 # Main configuration
+│           ├── application-dev.yml             # Development profile (optional)
+│           └── db/
+│               └── migration/                  # Flyway migration scripts
+│
+├── pom.xml
+├── README.md
+└── .gitignore
+
+> **Package Structure** follows a clean **feature-based** organization, where each module has its own controllers, services, repositories, and DTOs.
+
 ## 📡 API Endpoints
 
 ### 🔐 Authentication
@@ -119,5 +152,24 @@ mvn spring-boot:run
 |--------|---------------------|-------------------------|--------------|----------------|---------------|-------|
 | `GET`  | `/orders`           | دریافت لیست همه سفارشات | -            | List<OrderDto> | Authenticated | -     |
 | `GET`  | `/orders/{orderId}` | دریافت جزئیات یک سفارش  | -            | `OrderDto`     | Authenticated | -     |
+
+🏗️ Architecture
+
+Layered Architecture (Controller → Service → Repository)
+DTO Pattern with MapStruct
+Repository Pattern with Spring Data JPA
+Global Exception Handling
+Clean Code & SOLID Principles
+
+
+🔮 Future Improvements
+
+Complete frontend development
+Stripe payment integration
+Product reviews and rating system
+Docker & Docker Compose
+Unit & Integration tests
+
+
 
 Made with ❤️ using Spring Boot
