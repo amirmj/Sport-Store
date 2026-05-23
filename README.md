@@ -20,43 +20,41 @@
 
 ## 📋 About the Project
 
-**Sport-Store** is a full-featured e-commerce demo website specialized in sports products. It includes a complete
-backend and a clean frontend using Thymeleaf.
+**Sport-Store** is a robust and well-structured RESTful API for an online sports products store. The project focuses on
+clean architecture, high security, and scalability, making it ready to connect with any frontend (Web or Mobile).
 
-The project demonstrates professional backend development skills with modern technologies and best practices.
 
 ---
 
 ### ✨ Key Features
 
-- **Advanced Product Search** (by name, category, brand, price)
-- Secure user registration and login with **JWT**
-- Dynamic shopping cart
-- Online payment integration with **Stripe**
-- Order history and tracking
-- Admin panel for product and order management
-- Responsive design with Thymeleaf templates
+- JWT Authentication with Access Token + Refresh Token
+- Complete Shopping Cart management (Create, Add, Update, Remove, Clear)
+- Product management with categories
+- Order management
+- User registration and management
+- Full API documentation with Swagger
+- Database migrations using Flyway
 
 ---
 
 ## 🛠️ Technologies
 
-- **Backend**: Spring Boot 4.0.2, Spring Data JPA, Spring Security
-- **Language**: Java 21
-- **Database**: MySQL + Flyway (Migrations)
-- **Security**: JWT Authentication
-- **Payment**: Stripe
-- **Frontend**: Thymeleaf
+- **Java**: 21
+- **Framework**: Spring Boot 4.0.2
+- **Security**: Spring Security + JWT (Access & Refresh Token)
+- **Database**: MySQL + Spring Data JPA + Hibernate
+- **Migration**: Flyway
 - **Mapping**: MapStruct
-- **Documentation**: Swagger UI (OpenAPI)
+- **Validation**: Jakarta Bean Validation
+- **API Documentation**: Springdoc OpenAPI (Swagger)
 - **Build Tool**: Maven
 
 ---
 
-## 🚀 Quick Start
+## 🚀 How to Run
 
 ### Prerequisites
-
 - JDK 21
 - Maven 3.9+
 - MySQL 8
@@ -121,3 +119,5 @@ mvn spring-boot:run
 |--------|---------------------|-------------------------|--------------|----------------|---------------|-------|
 | `GET`  | `/orders`           | دریافت لیست همه سفارشات | -            | List<OrderDto> | Authenticated | -     |
 | `GET`  | `/orders/{orderId}` | دریافت جزئیات یک سفارش  | -            | `OrderDto`     | Authenticated | -     |
+
+Made with ❤️ using Spring Boot
