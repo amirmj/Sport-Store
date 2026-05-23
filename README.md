@@ -70,3 +70,54 @@ cd sport-store
 # Configure application.yml (database, JWT, Stripe keys)
 mvn flyway:migrate
 mvn spring-boot:run
+
+```
+
+## 📡 API Endpoints
+
+### 🔐 Authentication
+
+| Method | Endpoint        | Description                     | Request Body   | Response               | Access        | Notes                                              |
+|--------|-----------------|---------------------------------|----------------|------------------------|---------------|----------------------------------------------------|
+| `POST` | `/auth/login`   | ورود کاربر و دریافت توکن دسترسی | `LoginRequest` | `JwtResponse` + Cookie | Public        | Refresh Token به صورت HttpOnly Cookie ذخیره می‌شود |
+| `POST` | `/auth/refresh` | تمدید توکن دسترسی               | - (از Cookie)  | `JwtResponse`          | Public        | استفاده از Refresh Token                           |
+| `GET`  | `/auth/me`      | دریافت اطلاعات کاربر فعلی       | -              | `UserDto`              | Authenticated | نیاز به Access Token                               |
+
+### 👤 User Management
+
+| Method   | Endpoint                      | Description             | Request Body            | Response      | Access     | Notes            |
+|----------|-------------------------------|-------------------------|-------------------------|---------------|------------|------------------|
+| `POST`   | `/users`                      | ثبت‌نام کاربر جدید      | `RegisterUserRequest`   | `UserDto`     | Public     | -                |
+| `GET`    | `/users`                      | دریافت لیست همه کاربران | -                       | List<UserDto> | Admin      | قابلیت مرتب‌سازی |
+| `GET`    | `/users/{id}`                 | دریافت اطلاعات یک کاربر | -                       | `UserDto`     | Admin      | -                |
+| `PUT`    | `/users/{id}`                 | ویرایش اطلاعات کاربر    | `UpdateUserRequest`     | `UserDto`     | Admin      | -                |
+| `DELETE` | `/users/{id}`                 | حذف کاربر               | -                       | -             | Admin      | -                |
+| `POST`   | `/users/{id}/change-password` | تغییر رمز عبور کاربر    | `ChangePasswordRequest` | -             | Admin/User | -                |
+
+### 🛒 Cart
+
+| Method   | Endpoint                            | Description              | Request Body            | Response       | Access        | Notes |
+|----------|-------------------------------------|--------------------------|-------------------------|----------------|---------------|-------|
+| `POST`   | `/carts`                            | ایجاد سبد خرید جدید      | -                       | `CartDto`      | Authenticated | -     |
+| `POST`   | `/carts/{cartId}/items`             | افزودن محصول به سبد خرید | `AddItemsToCartRequest` | `CartItemsDto` | Authenticated | -     |
+| `GET`    | `/carts/{cartId}`                   | دریافت اطلاعات سبد خرید  | -                       | `CartDto`      | Authenticated | -     |
+| `PUT`    | `/carts/{cartId}/items/{productId}` | به‌روزرسانی تعداد محصول  | `UpdateCartItemDto`     | `CartItemsDto` | Authenticated | -     |
+| `DELETE` | `/carts/{cartId}/items/{productId}` | حذف محصول از سبد         | -                       | -              | Authenticated | -     |
+| `DELETE` | `/carts/{cartId}/items`             | خالی کردن کامل سبد خرید  | -                       | -              | Authenticated | -     |
+
+### 📦 Products
+
+| Method   | Endpoint         | Description            | Request Body | Response         | Access | Notes                    |
+|----------|------------------|------------------------|--------------|------------------|--------|--------------------------|
+| `GET`    | `/products`      | دریافت لیست محصولات    | -            | List<ProductDto> | Public | پشتیبانی از `categoryId` |
+| `GET`    | `/products/{id}` | دریافت جزئیات یک محصول | -            | `ProductDto`     | Public | -                        |
+| `POST`   | `/products`      | ایجاد محصول جدید       | `ProductDto` | `ProductDto`     | Admin  | -                        |
+| `PUT`    | `/products/{id}` | ویرایش محصول           | `ProductDto` | `ProductDto`     | Admin  | -                        |
+| `DELETE` | `/products/{id}` | حذف محصول              | -            | -                | Admin  | -                        |
+
+### 📋 Orders
+
+| Method | Endpoint            | Description             | Request Body | Response       | Access        | Notes |
+|--------|---------------------|-------------------------|--------------|----------------|---------------|-------|
+| `GET`  | `/orders`           | دریافت لیست همه سفارشات | -            | List<OrderDto> | Authenticated | -     |
+| `GET`  | `/orders/{orderId}` | دریافت جزئیات یک سفارش  | -            | `OrderDto`     | Authenticated | -     |
