@@ -16,6 +16,14 @@
 
 **A modern online sports equipment store built with Spring Boot 4 and Java 21.**
 
+## Storefront
+
+The application includes a responsive sports storefront with product browsing, search and category filters, product details, shopping bag, registration/sign-in, checkout, and order history.
+
+Run the Spring application and open `/`. See [Storefront setup, API assessment, and checks](docs/STOREFRONT.md).
+
+**Checkout currently saves a pending order request; online payment and delivery are not yet implemented.**
+
 ---
 
 ## 📋 About the Project
