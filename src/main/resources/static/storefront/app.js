@@ -232,15 +232,19 @@ async function addProduct(id, quantity) {
     state.cart.items.find((item) => item.product.id === id)?.quantity || 0;
   if (currentQuantity + quantity > 99)
     throw new Error("You can add up to 99 of an item to your bag.");
-  const item = await api.addItem(cartId, id);
-  if (quantity > 1)
-    await api.updateItem(cartId, id, item.quantity + quantity - 1);
-  await loadCart();
-  if (state.cartError)
-    throw new Error(
-      "Your item was added, but we couldn’t refresh the bag. Open your bag to check it before adding again.",
-    );
+  const result = await api.addQuantity(cartId, id, quantity);
+  state.cart = result.cart;
+  state.cartError = "";
   header.innerHTML = views.header(state.cart, state.user, route().path);
+  if (!result.complete) {
+    const actualQuantity =
+      state.cart.items.find((item) => item.product.id === id)?.quantity || 0;
+    notify(
+      `We couldn’t confirm the full addition. Your bag currently contains ${actualQuantity} of this item. Review your bag before adding more.`,
+      true,
+    );
+    return;
+  }
   notify("Good choice. Added to your bag.", true);
 }
 
@@ -398,7 +402,10 @@ document.addEventListener("submit", async (event) => {
     }
     state.user = await api.login(credentials);
     stored(localStorage, sessionKey, "active");
-    location.hash = data.get("next") === "checkout" ? "/checkout" : "/account";
+    const next = String(data.get("next"));
+    location.hash = ["checkout", "orders"].includes(next)
+      ? `/${next}`
+      : "/account";
     if (route().path === "/account") await render(false);
   } catch (error) {
     const errorElement = document.getElementById("auth-error");

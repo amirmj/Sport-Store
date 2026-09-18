@@ -38,6 +38,60 @@ test("delete accepts an empty 204 response", async () => {
   assert.equal(await api.removeItem("cart", 1), undefined);
 });
 
+test("quantity additions reconcile after a failed update without repeating the POST", async () => {
+  for (const actualQuantity of [1, 3]) {
+    const cart = {
+      id: "cart-123",
+      items: [{ product: { id: 8 }, quantity: actualQuantity }],
+    };
+    const fetchMock = mock.method(globalThis, "fetch", async (_, options) => {
+      if (options.method === "POST") return json({ quantity: 1 });
+      if (options.method === "PUT") throw new TypeError("Connection lost");
+      return json(cart);
+    });
+    assert.deepEqual(await api.addQuantity("cart-123", 8, 3), {
+      cart,
+      complete: false,
+    });
+    assert.deepEqual(
+      fetchMock.mock.calls.map((call) => call.arguments[1].method),
+      ["POST", "PUT", "GET"],
+    );
+    mock.restoreAll();
+  }
+});
+
+test("quantity additions report uncertainty when reconciliation is unavailable", async () => {
+  const fetchMock = mock.method(globalThis, "fetch", async (_, options) => {
+    if (options.method === "POST") return json({ quantity: 1 });
+    throw new TypeError("Connection lost");
+  });
+  await assert.rejects(
+    api.addQuantity("cart-123", 8, 3),
+    /check it before adding again/,
+  );
+  assert.deepEqual(
+    fetchMock.mock.calls.map((call) => call.arguments[1].method),
+    ["POST", "PUT", "GET"],
+  );
+});
+
+test("successful additions use the returned item quantity and refreshed cart", async () => {
+  const cart = { id: "cart-123", items: [{ quantity: 5 }] };
+  const fetchMock = mock.method(globalThis, "fetch", async (_, options) => {
+    if (options.method === "POST") return json({ quantity: 3 });
+    if (options.method === "PUT") return json({ quantity: 5 });
+    return json(cart);
+  });
+  assert.deepEqual(await api.addQuantity("cart-123", 8, 3), {
+    cart,
+    complete: true,
+  });
+  assert.deepEqual(JSON.parse(fetchMock.mock.calls[1].arguments[1].body), {
+    quantity: 5,
+  });
+});
+
 test("authenticated checkout refreshes once on 401 and sends only cartId", async () => {
   const fetchMock = mock.method(globalThis, "fetch", async (path, options) => {
     if (path === "/auth/refresh") return json({ token: "refreshed-token" });

@@ -121,6 +121,25 @@ export const api = {
       method: "PUT",
       body: { quantity },
     }),
+  /** @param {string} id @param {number} productId @param {number} quantity @returns {Promise<{cart: Cart, complete: boolean}>} */
+  async addQuantity(id, productId, quantity) {
+    let complete = true;
+    try {
+      const item = await api.addItem(id, productId);
+      if (quantity > 1)
+        await api.updateItem(id, productId, item.quantity + quantity - 1);
+    } catch {
+      complete = false;
+    }
+    try {
+      return { cart: await api.cart(id), complete };
+    } catch {
+      throw new ApiError(
+        0,
+        "We couldn’t confirm the quantity in your bag. Open your bag and check it before adding again.",
+      );
+    }
+  },
   /** @param {string} id @param {number} productId @returns {Promise<void>} */
   removeItem: (id, productId) =>
     request(`/carts/${encodeURIComponent(id)}/items/${productId}`, {

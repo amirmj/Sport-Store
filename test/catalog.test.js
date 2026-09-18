@@ -7,6 +7,7 @@ import {
   stored,
 } from "../src/main/resources/static/storefront/catalog.js";
 import {
+  account,
   checkout,
   home,
   orderPage,
@@ -59,6 +60,21 @@ test("search combines category, case-insensitive descriptions and numeric price 
 test("unknown categories have a usable fallback", () => {
   assert.equal(categoryFor(50).name, "Equipment");
   assert.equal(categoryFor(null).image, "fitness");
+});
+
+test("account forms preserve allowed destinations and reject arbitrary redirects", () => {
+  for (const next of ["checkout", "orders"]) {
+    const html = account(null, new URLSearchParams({ next }));
+    assert.ok(html.includes(`name="next" type="hidden" value="${next}"`));
+    assert.ok(html.includes(`mode=register&next=${next}`));
+  }
+  for (const params of ["", "next=https://example.com"]) {
+    assert.ok(
+      account(null, new URLSearchParams(params)).includes(
+        'name="next" type="hidden" value="account"',
+      ),
+    );
+  }
 });
 
 test("catalog and product templates escape untrusted text", () => {
