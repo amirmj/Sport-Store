@@ -1,13 +1,35 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-          name="viewport">
-    <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <title>Document</title>
-</head>
-<body>
-<h1>Hello World</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f4ef" />
+    <meta
+      name="description"
+      content="Sport Store. Find your next level with equipment for running, training, the court, and the outdoors."
+    />
+    <title>Sport Store — Built for your next</title>
+    <link rel="icon" href="/storefront/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/storefront/styles.css" />
+    <script type="module" src="/storefront/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="announcement">
+      <span>ONE MORE REP. ONE MORE MILE. ONE MORE POSSIBILITY.</span
+      ><a href="#/shop">Find your next <span aria-hidden="true">↗</span></a>
+    </div>
+    <header id="header" class="header"></header>
+    <main id="main" tabindex="-1">
+      <div class="loading" role="status">Getting your gear ready…</div>
+    </main>
+    <footer id="footer"></footer>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <noscript
+      ><p class="notice">
+        Please enable JavaScript to browse products and manage your shopping
+        bag.
+      </p></noscript
+    >
+  </body>
 </html>
